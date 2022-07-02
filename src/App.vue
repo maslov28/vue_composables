@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ul>
+      <li>Написать композиционную функцию useModal, которая будет отвечать за отображение модального окна.  В этой функции: </li>
+      <ul>
+        <li>Реализовать метод setModalVisibility</li>
+        <li>Добавить реактивную переменную showModal, которая отвечает за показ компонента modal-window</li>
+      </ul>
+    </ul>
+
+    <button @click="setModalVisibility">{{ showModal ? 'Скрыть модалку' : 'Показать модалку' }}</button>
+    <modal-window v-if="showModal"></modal-window>
+    
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ModalWindow from './components/ModalWindow.vue'
+import useModal from './composables/useModal'
 
 export default {
-  name: 'App',
+  setup() {
+    const {setModalVisibility, showModal} = new useModal()
+
+  return {
+      setModalVisibility,
+      showModal
+    }
+  },
   components: {
-    HelloWorld
+    ModalWindow
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
