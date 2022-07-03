@@ -8,8 +8,8 @@
       </ul>
     </ul>
 
-    <button @click="setModalVisibility(!showModal)">{{ showModal ? 'Скрыть модалку' : 'Показать модалку' }}</button>
-    <modal-window v-if="showModal"></modal-window>
+    <button @click.stop="setModalVisibility(!showModal)">{{ showModal ? 'Скрыть модалку' : 'Показать модалку' }}</button>
+    <modal-window v-show="showModal" v-click-outside="closeModal"></modal-window>
     
   </div>
 </template>
@@ -21,10 +21,14 @@ import useModal from './composables/useModal'
 export default {
   setup() {
     const {setModalVisibility, showModal} = new useModal()
+    const closeModal = () => {
+        setModalVisibility(false)
+    }
 
   return {
       setModalVisibility,
-      showModal
+      showModal,
+      closeModal
     }
   },
   components: {
