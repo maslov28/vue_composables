@@ -1,8 +1,8 @@
 import {ref} from 'vue'
 
 export default function useModal() {
-  const setModalVisibility = () => {
-    showModal.value = !showModal.value
+  const setModalVisibility = (isShow) => {
+    showModal.value = isShow
   }
   const showModal = ref(false)
 

@@ -8,7 +8,7 @@
       </ul>
     </ul>
 
-    <button @click="setModalVisibility">{{ showModal ? 'Скрыть модалку' : 'Показать модалку' }}</button>
+    <button @click="setModalVisibility(!showModal)">{{ showModal ? 'Скрыть модалку' : 'Показать модалку' }}</button>
     <modal-window v-if="showModal"></modal-window>
     
   </div>
